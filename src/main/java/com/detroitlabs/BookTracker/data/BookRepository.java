@@ -3,38 +3,50 @@ package com.detroitlabs.BookTracker.data;
 import com.detroitlabs.BookTracker.model.Book;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @Component
 public class BookRepository {
+
     private static final List<Book> ALL_BOOKS = Arrays.asList(
-            new Book("Harry Potter and the Sorcerers Stone", "J.K. Rowling", "Fantasy", 309, 1),
-            new Book("Harry Potter and the Chamber of Secrets", "J.K. Rowling", "Fantasy", 341, 2),
-            new Book("Harry Potter and the Prisoner of Azkaban", "J.K. Rowling", "Fantasy", 435, 3),
-            new Book("Harry Potter and the Goblet of Fire", "J.K. Rowling", "Fantasy", 734, 4),
-            new Book("Harry Potter and the Order of the Phoenix", "J.K. Rowling", "Fantasy", 870, 5),
-            new Book("Harry Potter and the Half-Blood Prince", "J.K. Rowling", "Fantasy", 652, 6),
-            new Book("Harry Potter and the Deathly Hollows", "J.K. Rowling", "Fantasy", 759, 7),
-            new Book("Harry Potter and the Cursed Child", "J.K. Rowling", "Fantasy", 343, 8),
-            new Book("The Ballad of Songbirds and Snakes", "Suzanne Collins", "Fantasy", 439, 9),
-            new Book("An Indigenous Peoples' History of the United States", "Roxanne Dunbar-Ortiz", "History", 296, 10),
-            new Book("The Last House on Needless Street", "Catriona Ward", "Horror", 335, 11),
-            new Book("Heart-Shaped Box", "Joe Hill", "Horror", 376, 12),
-            new Book("The Coffin Path", "Katherine Clements", "Horror", 384, 13),
-            new Book("Digging Up Mother", "Doug Stanhope", "Comedy", 288, 14));
+            new Book("Harry Potter and the Sorcerers Stone", "By: J.K. Rowling", "Fantasy", 309, "HPSorcerer"),
+            new Book("Harry Potter and the Chamber of Secrets", "By: J.K. Rowling", "Fantasy", 341, "HPChamber"),
+            new Book("Harry Potter and the Prisoner of Azkaban", "By: J.K. Rowling", "Fantasy", 435, "HPPrisoner"),
+            new Book("Harry Potter and the Goblet of Fire", "By: J.K. Rowling", "Fantasy", 734, "HPGoblet"),
+            new Book("Harry Potter and the Order of the Phoenix", "By: J.K. Rowling", "Fantasy", 870, "HPOrder"),
+            new Book("Harry Potter and the Half-Blood Prince", "By: J.K. Rowling", "Fantasy", 652, "HPHalfBlood"),
+            new Book("Harry Potter and the Deathly Hollows", "By: J.K. Rowling", "Fantasy", 759, "HPDeathly"),
+            new Book("Harry Potter and the Cursed Child", "By: J.K. Rowling", "Fantasy", 343, "HPCursedChild"),
+            new Book("The Ballad of Songbirds and Snakes", "By: Suzanne Collins", "Fantasy", 439, "Songbirds"),
+            new Book("An Indigenous Peoples' History of the United States", "By: Roxanne Dunbar-Ortiz", "History", 296, "IPHistory"),
+            new Book("The Last House on Needless Street", "By: Catriona Ward", "Horror", 335, "LastHouse"),
+            new Book("Heart-Shaped Box", "By: Joe Hill", "Horror", 376, "HeartShaped"),
+            new Book("The Coffin Path", "By: Katherine Clements", "Horror", 384, "CoffinPath"),
+            new Book("Digging Up Mother", "By: Doug Stanhope", "Comedy", 288, "DiggingMother"));
 
 
     public List<Book> getAllBooks() {
-            return ALL_BOOKS;
-        }
+        return ALL_BOOKS;
+    }
 
-    public Book findByTitle(String title) {
+    public String findByTitle(String title) {
         for (Book book : ALL_BOOKS) {
             if (book.getTitle().equals(title)) {
-                return book;
+                return book.getTitle();
             }
         }
         return null;
+    }
+
+    public List<Book> addByTitle(String title) {
+        List<Book> bookGoal = new ArrayList<>();
+        for (Book book : ALL_BOOKS) {
+            if (book.getTitle().equals(title)) {
+                bookGoal.add(book);
+            }
+        }
+        return bookGoal;
     }
 }

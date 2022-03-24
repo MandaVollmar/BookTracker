@@ -5,14 +5,14 @@ public class Book {
     private String author;
     private String genre;
     private int numOfPages;
-    private int id;
+    private String imageName;
 
-    public Book(String title, String author, String genre, int numOfPages, int id) {
+    public Book(String title, String author, String genre, int numOfPages, String imageName) {
         this.title = title;
         this.author = author;
         this.genre = genre;
         this.numOfPages = numOfPages;
-        this.id = id;
+        this.imageName = imageName;
     }
 
     public String getTitle() {
@@ -47,11 +47,11 @@ public class Book {
         this.numOfPages = numOfPages;
     }
 
-    public int getId() {
-        return id;
+    public String getImageName() {
+        return imageName;
     }
 
-    public void setId(int Id) {
-        this.id = id;
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 }

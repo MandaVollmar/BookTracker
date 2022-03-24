@@ -2,12 +2,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <link rel="stylesheet" th:href="@{/app.css}" />
     <title>Book Tracker</title>
+    <link rel="stylesheet" th:href="@{/app.css}"/>
 </head>
+<h1> Book Tracker</h1>
+<h2 th:text="${date}">Current Date</h2>
+<h2 th:text="${eoy} + ' days left!' ">End of year</h2>
 <body>
-<div>
-    <h1 th:text="${bookList}">Book Title</h1>
+<div th:each="book: ${bookList}">
+    <h3 class="title" th:text="${book.title+ ' ' + book.author}">Book Title </h3>
+    <h4 class="details" th:text="'Genre:  ' + ${book.genre} + '  Pages:  '+ ${book.numOfPages}">Genre and Pages</h4>
+    <img th:src="@{'/images/' + ${book.imageName} + '.jpeg'}" alt="Book Cover"/>
+<!--    <a th:href="'/images/' + ${}"></a>-->
 </div>
 </body>
 </html>

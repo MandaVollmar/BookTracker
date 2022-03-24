@@ -25,6 +25,9 @@ public class ImageRepository {
             new Image("CoffinPath", 13),
             new Image("DiggingMother", 14));
 
+    public List<Image> getAllImages() {
+        return ALL_Images;
+    }
 
     public Image setImage(Integer id) {
         for (Image image : ALL_Images) {
